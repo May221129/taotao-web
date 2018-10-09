@@ -16,14 +16,15 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.taotao.common.annotation.CheckoutToken;
+import com.taotao.common.threadLocal.UserThreadLocal;
+import com.taotao.sso.query.bean.User;
 import com.taotao.web.bean.Cart;
 import com.taotao.web.bean.Item;
 import com.taotao.web.bean.Order;
-import com.taotao.web.bean.User;
 import com.taotao.web.service.CartService;
 import com.taotao.web.service.ItemService;
 import com.taotao.web.service.OrderService;
-import com.taotao.web.threadLocal.UserThreadLocal;
 
 @RequestMapping("order")
 @Controller
@@ -43,6 +44,7 @@ public class OrderController {
 	 * @param itemId
 	 * @return mv
 	 */
+	@CheckoutToken
 	@RequestMapping(value = "{itemId}", method = RequestMethod.GET)
 	public ModelAndView itemToOrder(@PathVariable("itemId")Long itemId){
 		ModelAndView mv = new ModelAndView("order");
@@ -58,6 +60,7 @@ public class OrderController {
 	 * @param itemId
 	 * @return mv
 	 */
+	@CheckoutToken
 	@RequestMapping(value = "create", method = RequestMethod.GET)
 	public ModelAndView cartToOrder(){
 		ModelAndView mv = new ModelAndView("order-cart");
@@ -76,10 +79,9 @@ public class OrderController {
 	 * @param order
 	 * @param request ==> 现在该入参可以不用了，因为在拦截器中将user对象放入了UserThreadLocal中，而非放入request中。
 	 */
+	@CheckoutToken
 	@RequestMapping(value = "submit", method = RequestMethod.POST)
 	public ResponseEntity<Map<String, Object>> submitOrder(Order order){
-		//拦截器验证用户是否登录时，将user放入request中，所以这里可以直接获取user：
-//		User user = (User)request.getAttribute(USER_FROM_REDIS);
 		//拦截器中将user对象放入了UserThreadLocal中，这里可以通过该对象直接获取：
 		User user = UserThreadLocal.get();
 		//提交订单给order系统：
@@ -98,6 +100,7 @@ public class OrderController {
 	 * 完成订单确认后，跳转到成功页。
 	 * 怎么确定mv中需要放入哪些数据：看成功页中需要哪些数据：/WEB-INF/views/success.jsp
 	 */
+	@CheckoutToken
 	@RequestMapping(value = "success", method = RequestMethod.GET)
 	public ModelAndView success(@RequestParam("id")String orderId){
 		ModelAndView mv = new ModelAndView("success");

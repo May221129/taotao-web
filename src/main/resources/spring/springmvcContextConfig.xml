@@ -46,7 +46,7 @@
 			进入了springmvc框架的url都会被这个拦截器拦截。
 		 -->
 		<!-- 
-			<bean class="com.taotao.web.interceptor.CheckLoginInterceptor"></bean>
+			<bean class="com.taotao.web.interceptor.WebCheckoutIsLoginInterceptor"></bean>
 		 -->
 		
 		<!-- 
@@ -57,11 +57,10 @@
 			<!-- 拦截哪些url：
 				 order或cart下面有多级目录，就写"**" -->
 			<mvc:mapping path="/order/**"/>
-			<mvc:mapping path="/cart/**"/>
 			<!-- 哪些url不被拦截： -->
             <!-- <mvc:exclude-mapping path="/user/index"/> -->
             <!-- 处理请求的拦截器： -->
-			<bean class="com.taotao.web.interceptor.CheckLoginInterceptor"></bean>
+			<bean class="com.taotao.web.interceptor.WebCheckoutIsLoginInterceptor"></bean>
 		</mvc:interceptor>
 	</mvc:interceptors>
 </beans>

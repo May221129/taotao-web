@@ -9,9 +9,9 @@ import org.springframework.stereotype.Service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.taotao.common.service.ApiService;
+import com.taotao.common.threadLocal.UserThreadLocal;
+import com.taotao.sso.query.bean.User;
 import com.taotao.web.bean.Cart;
-import com.taotao.web.bean.User;
-import com.taotao.web.threadLocal.UserThreadLocal;
 
 @Service
 public class CartService {

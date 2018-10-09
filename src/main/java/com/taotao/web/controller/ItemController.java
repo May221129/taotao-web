@@ -13,7 +13,6 @@ import com.taotao.web.service.ItemDescService;
 import com.taotao.web.service.ItemParamItemService;
 import com.taotao.web.service.ItemService;
 
-
 /**
  * url:http://www.taotao.com/item/{itemId}.html
  */

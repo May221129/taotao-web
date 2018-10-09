@@ -9,8 +9,10 @@ var TT = TAOTAO = {
 			return ;
 		}
 		$.ajax({
+			//用了dubbo后，最终的url：
+			url : "http://ssoquery.taotao.com/user/"  + _token,
 			//sso端的接口被我改了，所有这里的url也跟着改变：
-			url : "http://sso.taotao.com/service/user/checkoutToken",
+//			url : "http://sso.taotao.com/service/user/checkoutToken",
 		//	url : "http://sso.taotao.com/service/user/" + _token,
 			dataType : "jsonp",
 			type : "GET",

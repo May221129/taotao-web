@@ -8,7 +8,7 @@
 
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
-		<param-value>classpath:spring/springContextConfig*.xml</param-value>
+		<param-value>classpath:spring/springContextConfig*.xml, classpath:dubbo/dubbo-server.xml</param-value>
 	</context-param>
 
 	<!--Spring的ApplicationContext 载入 -->

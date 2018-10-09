@@ -8,8 +8,8 @@ import org.springframework.stereotype.Service;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.taotao.common.httpClient.HttpResult;
 import com.taotao.common.service.ApiService;
+import com.taotao.sso.query.bean.User;
 import com.taotao.web.bean.Order;
-import com.taotao.web.bean.User;
 
 @Service
 public class OrderService {

@@ -12,7 +12,6 @@
 	<packaging>war</packaging>
 
 	<dependencies>
-
 		<dependency>
 			<groupId>com.atllm.taotao</groupId>
 			<artifactId>taotao-common</artifactId>
@@ -23,14 +22,14 @@
 			<artifactId>taotao-manage-pojo</artifactId>
 			<version>1.0.0-SNAPSHOT</version>
 		</dependency>
-		
+
 		<!-- RabbitMQ消息中间件的依赖：用于消息的发布订阅。 -->
 		<dependency>
-	        <groupId>org.springframework.amqp</groupId>
-	        <artifactId>spring-rabbit</artifactId>
-	        <version>1.4.0.RELEASE</version>
-	    </dependency>
-		
+			<groupId>org.springframework.amqp</groupId>
+			<artifactId>spring-rabbit</artifactId>
+			<version>1.4.0.RELEASE</version>
+		</dependency>
+
 		<!-- 单元测试 -->
 		<dependency><!-- manage -->
 			<groupId>junit</groupId>
@@ -43,7 +42,7 @@
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-webmvc</artifactId>
 		</dependency>
-		
+
 		<!-- redis缓存：jedis客户端 缓存是需要在业务层使用的。 -->
 		<!-- <dependency> <groupId>redis.clients</groupId> <artifactId>jedis</artifactId> 
 			<version>2.6.0</version> </dependency> -->
@@ -55,7 +54,7 @@
 			<artifactId>spring-data-redis</artifactId>
 			<version>1.5.2.RELEASE</version>
 		</dependency>
-		
+
 		<dependency><!-- -->
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-log4j12</artifactId>
@@ -72,13 +71,13 @@
 			<groupId>org.apache.httpcomponents</groupId>
 			<artifactId>httpclient</artifactId>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-validator</artifactId>
 			<version>5.1.2.Final</version>
 		</dependency>
-		
+
 		<!-- JSP相关 -->
 		<dependency><!--web -->
 			<groupId>jstl</groupId>
@@ -94,7 +93,7 @@
 			<artifactId>jsp-api</artifactId>
 			<scope>provided</scope>
 		</dependency>
-		
+
 		<!-- 时间操作组件 -->
 		<dependency>
 			<groupId>joda-time</groupId>
@@ -118,7 +117,29 @@
 			<version>1.10</version>
 		</dependency>
 
-
+		<!-- dubbo： -->
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>dubbo</artifactId>
+			<version>2.5.3</version>
+			<exclusions>
+				<exclusion>
+					<!-- 排除传递spring依赖 -->
+					<artifactId>spring</artifactId>
+					<groupId>org.springframework</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.zookeeper</groupId>
+			<artifactId>zookeeper</artifactId>
+			<version>3.3.3</version>
+		</dependency>
+		<dependency>
+			<groupId>com.github.sgroschupf</groupId>
+			<artifactId>zkclient</artifactId>
+			<version>0.1</version>
+		</dependency>
 	</dependencies>
 
 	<build>
